@@ -1,11 +1,24 @@
 sudo: required
+
 services:
     - docker
     
 before_install:
-    - docker build -t nikolacol/docker-react -f Dockerfile.dev .
+    - docker build -t nikolacol/docker-react - f Dockerfile.dev .
     
-script:
-    - docker run -e CI=true nikolacol/docker-react npm run test -- --coverage
+script: 
+    - docker run nikolacol/docker-react npm run test -- --coverage
+  
+deploy:
+    provider: elasticbeanstalk
+    region: "eu-central-1"
+    app: "docker"
+    env: "Docker-env"
+    bucket_name: "elasticbeanstalk-eu-central-1-891377230472"
+    bucket_path: "docker"
+    on: 
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: "$AWS_SECRET_KEY"
     
     
