@@ -4,10 +4,10 @@ services:
     - docker
     
 before_install:
-    - docker build -t nikolacol/docker-react - f Dockerfile.dev .
+    - docker build -t nikolac/docker-react - f Dockerfile.dev .
     
 script: 
-    - docker run nikolacol/docker-react npm run test -- --coverage
+    - docker run nikolac/docker-react npm run test -- --coverage
   
 deploy:
     provider: elasticbeanstalk
