@@ -4,7 +4,7 @@ services:
     - docker
     
 before_install:
-    - docker build -t nikolac/docker-react -f Dockerfile .
+    - docker build -t nikolac/docker-react -f Dockerfile.dev .
     
 script: 
     - docker run nikolac/docker-react npm run test -- --coverage
